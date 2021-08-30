@@ -1,0 +1,84 @@
+<div  *ngIf="cartItems.length < 1">
+    <div class="text-center p-5">
+        <img src="../../../assets/img/vacio-carrito.JPG">
+        <h2 class="py-2" style="font-weight: 700;">Tu carrito está vacío.</h2>
+        <p class="p-0 m-0"  style="font-size:0.8rem ">Antes de proceder con el pago, debe agregar algunos productos a su carrito de compras.</p>
+        <p class="p-0" style="font-size:0.8rem">Encontrará muchos productos interesantes en nuestra "Tienda".</p>
+        <button class="btn btn-outline-danger btn-block m-2" routerLink ="/principal">VOLVER A LA TIENDA</button>
+    </div>
+</div>
+
+<div  *ngIf="cartItems.length > 0">
+    <div class="row">
+        <div class="col-md-8"><!-- Listado de productos a comprar-->
+            <table class="table table-sm ">
+                <thead class="mb-4" >
+                    <tr style="font-weight: 700;font-size: 20px;">
+                      <th scope="col"></th>
+                      <th scope="col" class="text-center pb-4">PRODUCTO</th>
+                      <th scope="col" class="text-center pb-4">PRECIO</th>
+                      <th scope="col" class="text-center pb-4">CANTIDAD</th>
+                      <th scope="col" class="text-center pb-4">SUBTOTAL</th>
+                    </tr>
+                    <br>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of cartItems; index as i">
+                      <th class="py-4">
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg" (click)="deleteItem(i)">
+                            <line y1="-0.5" x2="26.9072" y2="-0.5" transform="matrix(0.668965 -0.743294 0.715441 0.698673 1 21)" stroke="black"/>
+                            <line y1="-0.5" x2="26.9072" y2="-0.5" transform="matrix(0.668965 0.743294 -0.715441 0.698673 1 1)" stroke="black"/>
+                            </svg>
+                      <td class="py-3 mx-auto" style="font-size: 13px;width: 35%;" >
+                        <div class="row" >
+                            <div class="col-3 text-center">
+                                <img src="{{product.productImgUrl}}" width="60">
+                            </div>
+                            <div class="col">
+                                <span class="py-3">{{product.productName}}</span>
+                            </div>
+                        </div>
+                            
+                        
+                      </td>
+                      <td class="text-center py-3" style="font-size: 16px;font-weight: 400;color: #777777;">S/. {{product.productPrice.toFixed(2)}}</td>
+                      <td class="text-center py-3"> {{product.qty}}</td>
+                      <td class="text-center py-3 text-danger" style="font-weight: 700;"> S/. {{(product.qty * product.productPrice).toFixed(2) | number : '1.1-2'}}</td>
+                    </tr>
+                  </tbody>
+            </table>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-outline-danger btn-block mb-2 px-4 py-3" (click)="emptyCart()">
+                    <i class="fas fa-trash"></i> Vaciar carrito
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4"><!-- CARD- TOTAL-->
+            <div class="card">
+                <div class="card-body" >
+                    <h3 class="p-3 pb-5 pt-4" style="font-weight: 700;">TOTAL DEL CARRITO</h3>
+                        <div class="row px-3 h6">
+                            <div class="col-md-8" style="font-weight: 700;">Subtotal</div>
+                            <div class="col-md-4">S/. {{total.toFixed(2)}}</div>
+                        </div>
+                        <hr>
+                        <div class="row px-3 h5" style="font-weight: 700;">
+                            <div class="col-md-7" >Total</div>
+                            <div class="col-md-5 text-danger">S/. {{total.toFixed(2)}}</div>
+                        </div>
+                        <hr>
+                        <div class="d-grid">
+                            <button class="btn btn-warning" style="border-radius: 0%;font-weight: 300; font-size: 15px;">
+                                Paga con <img src="../../../assets/img/list-productos/pesas_barras/logo-Paypal.png" width="80" height="40"></button>
+                           <hr>
+                           <button class="btn btn-danger py-3 mb-4" style="border-radius: 0%;font-weight: 300; font-size: 15px;">
+                               FINALIZAR COMPRA</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<ngx-paypal [config]="payPalConfig"></ngx-paypal>-->
+    
+</div>

@@ -8,6 +8,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BodyComponent } from './components/body/body.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './components/home/home.component';
+import { PrincipalComponent } from './components/principal/principal.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
+import { PantallaCartComponent } from './components/pantalla-cart/pantalla-cart.component';
+
+/* external
+import { NgxPayPalModule } from 'ngx-paypal';*/
 
 @NgModule({
   declarations: [
@@ -17,10 +26,17 @@ import { AppRoutingModule } from './app-routing.module';
     HeaderComponent,
     FooterComponent,
     BodyComponent,
+    HomeComponent,
+    PrincipalComponent,
+    ProductListComponent,
+    CartComponent,
+    ProductItemComponent,
+    PantallaCartComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
+    //NgxPayPalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

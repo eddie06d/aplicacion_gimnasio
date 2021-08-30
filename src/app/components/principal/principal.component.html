@@ -1,0 +1,141 @@
+<!-- PARTE SUPERIOR---->
+  <header>
+    <div class="ocultar">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class=" container container-fluid">
+              <a class="navbar-brand" routerLink ="/"><img src="../../../assets/img/Imagen2.png" width="200"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav">
+                  <li class="nav-item  active">
+                      <a class="nav-link" >Tienda</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-white">Contacto</a>
+                  </li>
+                  </ul>
+              </div>
+              <div class="mx-auto"><!-- PARTE DERECHA(CARRITO-LOGIN)-->
+                  <!-- ICON- CARRITO-->
+                  <a class=" text-decoration-none text-light m-2 p-2 px-3" routerLink ="/cart">
+                    <i class="fas fa-shopping-cart"></i>
+                  </a>
+                  <!-- BUTTON LOGIN-->
+                  <div class=" btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-danger m-3 px-3 dropdown-toggle"data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://image.flaticon.com/icons/png/512/206/206853.png" width="35"><span class="m-2">Bryan</span><span class="caret"></span>
+                    </button>            
+                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <li><a class="dropdown-item"><i class="fa fa-fw fa-user"></i> Editar Perfil</a></li>
+                        <li><a class="dropdown-item" routerLink ="/cart"><i class="fas fa-shopping-cart"></i> Mi Carrito</a></li>
+                        <li class="divider"></li>
+                        <li><a class="dropdown-item" routerLink ="/"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a></li>
+                    </ul>
+                  </div>
+                  <!------->
+              </div>
+            </div>
+        </nav>
+    </div>
+    <!-- -----PARTE RESPONSIVO- dark--------- -->
+    <div class="ocultar-responsive-nav">
+        <nav class="navbar navbar-expand-lg navbar-light padding bg-dark " style="border: 1px solid rgba(33, 37, 41, 0.12);"><!--NAVEGACION SEGUNDO-->
+            <div id="top_menu_container" class="container justify-content-between">
+                <!-- SIRVE CUANDO SE ACHICA LA VENTANA DE ANCHO-->
+                <!-- LADO IZQ- BOTON DE DESPLAZAMIENTO-->
+                <button class="navbar-toggler tp-navbar-toggler collapsed text-light" type="button" data-bs-toggle="collapse" aria-label="Menu" data-bs-target="#top_menu_collapse" aria-controls="top_menu_collapse" aria-expanded="false" style="border: 0;">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <!-- LADO CENTRO- LOGOTIPO-->
+                <a href="" class="navbar-brand logo d-lg-none">
+                    <span role="img" aria-label="Logo of La Libreria" title="La Libreria"><img src="../../../assets/img/Imagen2.png"  width="200" class="img img-fluid" alt="gym" loading="lazy"></span>
+                </a>
+                <!-- LADO DERECHO- CARRITO-->
+                <div class="tp-account-info">
+                    <a class="" style="margin-right: 13px;">
+                        <i class="fas fa-shopping-cart text-light"></i>
+                    </a>
+                </div>
+                <!-- LADO IZQ- OPCIONES DE LA NAV-->
+                <div id="top_menu_collapse" class="navbar-collapse order-last order-lg-0 collapse">
+                    <ul id="top_menu" class="nav navbar-nav flex-grow-1 ">
+                        <li class="nav-item">
+                            <a href="" class="nav-link text-light">
+                                <span>Tienda</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link text-light">
+                                <span>Contacto</span>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+    
+            </div>
+        </nav>
+    </div>
+  </header>
+  <!-- Categoria-->
+  <div class="ocultar">
+    <div class="navbar navbar-expand-lg bg-danger p-3 font-clase">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse d-flex justify-content-around">
+                <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link text-white mx-5" >Articulos y accesorios</a></li>
+                <li class="nav-item"><a class="nav-link text-white mx-5 active" >Pesas y barras</a></li>
+                <li class="nav-item"><a class="nav-link text-white mx-5">Máquinas y bancas</a></li>
+                <li class="nav-item"><a class="nav-link text-white mx-5">Sumplementos</a></li>
+                </ul>
+            </div>  
+        </div>    
+    </div>
+  </div>
+  <!-- -----PARTE RESPONSIVO - CATEGORIA BOTON--------- -->
+  <div class="ocultar-responsive-nav">
+    <div class="navbar navbar-expand-lg bg-danger font-clase">
+        <div class="container">
+            <div class="dropdown">
+                <button type="button" id="categ" data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-danger btn-block dropdown-toggle h-100 border btn-white btn-lg px-4">
+                    <i class="fas fa-book-medical px-2"></i>
+                    <span class="tp-active-text pl-3">Categoria</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="categ">
+                    <a class="dropdown-item" href="#">Categoria</a>
+                    <a class="dropdown-item" href="#" data-id="47">Articulos y accesorios</a>
+                    <a class="dropdown-item" href="#" data-id="1">Pesas y barras</a>
+                    <a class="dropdown-item" href="#" data-id="61">Máquinas y bancas</a>
+                    <a class="dropdown-item" href="#" data-id="63">Sumplementos</a>
+                </div>
+            </div>
+            <div class=" btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-danger my-2 px-4 border btn-white btn-lg dropdown-toggle"data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://image.flaticon.com/icons/png/512/206/206853.png" width="35"><span class="m-2">Bryan</span><span class="caret"></span>
+                </button>            
+                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <li><a class="dropdown-item"><i class="fa fa-fw fa-user"></i> Editar Perfil</a></li>
+                    <li><a class="dropdown-item" routerLink ="/cart"><i class="fas fa-shopping-cart"></i> Mi Carrito</a></li>
+                    <li class="divider"></li>
+                    <li><a class="dropdown-item" routerLink ="/"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a></li>
+                </ul>
+            </div>   
+        </div> 
+    </div>
+  </div> 
+<!-- FIN-PARTE SUPERIOR-->
+<!-- Panel de la categoria-->
+<div class="grid-block font-clase" style="background-image: url('../../../assets/img/list-productos/pesas_barras/fondo.jpg');background-position: center center;background-repeat: no-repeat;background-size: cover; width: 100%; height: 25vh; ">
+    <div class="container">
+        <div class="text-center p-5" style="font-weight: 700;">
+            <span class="h1 text-white">Pesas y barras</span>
+        </div>
+    </div>
+</div>
+<div class="container p-4">
+    <div class="row">
+        <app-product-list></app-product-list>
+    </div>
+</div>
+<app-footer></app-footer>

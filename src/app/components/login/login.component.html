@@ -1,3 +1,5 @@
+<app-header></app-header>
+<main class="p-0">
 <div class="container p-4">
     <div class="row py-5">
     <div class="col-md-6 offset-md-3 ">
@@ -5,10 +7,10 @@
             <div class="card-body text-danger ">
                 <h1 class="text-center my-4 h2"><b>ACCEDER</b></h1>
                 <form class="pt-3">
-                    <div class="form-group mb-4">
-                        <label class="form-label">Nombre de usuario</label>
+                    <div class="form-group mb-3">
+                        <label class="form-label">DNI</label>
                         <div class="input-group">
-                            <span class="input-group-text bg-danger"><i class="fas fa-user text-white"></i></span>
+                            <span class="input-group-text bg-danger"><i class="far fa-id-card text-white"></i></span>
                             <input type="text" name="usuario"  class="form-control" autofocus>
                         </div>
                     </div>
@@ -20,7 +22,7 @@
                         </div>
                     </div>
                     <div class="d-grid gap-2">
-                        <button class="btn btn-danger btn-block mt-4" type="button">
+                        <button class="btn btn-danger btn-block mt-4" type="button"routerLink ="/principal" >
                             Iniciar Sesión
                         </button>
                     </div>
@@ -31,7 +33,7 @@
                             <i class="fab fa-google"></i> 
                         </button>
                         <button class="btn btn-light btn-block" type="button" style="border-radius: 50%;">
-                            <i class="fab fa-facebook "></i> 
+                            <i class="fab fa-twitter "></i> 
                         </button>
                         <button class="btn btn-light btn-block" type="button" style="border-radius: 50%;">
                             <i class="fab fa-github"></i> 
@@ -45,3 +47,5 @@
     </div>
 </div>
 </div>
+</main>
+<app-footer></app-footer>

@@ -1,0 +1,15 @@
+.font-clase{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+@media(max-width:991px){
+    .ocultar{
+        display: none;
+    }
+}
+
+@media(min-width:991px){
+    .ocultar-responsive-nav{
+        display: none;
+    }
+}

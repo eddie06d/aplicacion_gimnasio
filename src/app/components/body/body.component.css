@@ -1,4 +1,14 @@
-
+main{
+    background-image: url('../../../assets/img/Fondo.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #669999;
+    font-family: sans-serif;
+    margin-right: 20px;
+    width: 100%;
+}
 .beneficios{
     background-image: url('../../../assets/img/FondoBeneficios.jpg');
     padding: 50px;

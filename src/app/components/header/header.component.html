@@ -1,24 +1,24 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
+        <div class="container container-fluid">
           <a class="navbar-brand" routerLink ="/"><img src="../../../assets/img/Imagen2.png" width="200"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarColor01">
+          <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <a class="nav-link active" href="../body/body.component.html#servicios">Servicios</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="../body/body.component.html#SobreNosotros">Sobre nosotros</a>
+                <a class="nav-link text-white" href="../body/body.component.html#SobreNosotros">Nosotros</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="../footer/footer.component.html#footer">Contacto</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Catalogo
+                  Productos
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="#">Ropa</a></li>
@@ -28,22 +28,21 @@
                 </ul>
               </li>
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-sm-2" type="text" placeholder="Search products">
-              <button class="btn btn-danger my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-            </form>
             <!-- <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>        -->
           </div>
-          <button class="btn btn-danger m-3">
-            <a href="#" class="text-decoration-none text-white" routerLink ="/login">
-              <i class="fas fa-user mx-1"></i>
-              Login
-            </a>
-          </button>
+          <div class="d-flex justify-content-end w-100">
+            <button type="button" class="btn btn-danger m-3">
+              <a href="#" class="text-decoration-none text-white" routerLink ="/login">
+                <i class="fas fa-user mx-1"></i>
+                Login
+              </a>
+            </button>
+          </div>
         </div>
+        
       </nav>
 </header>
 
