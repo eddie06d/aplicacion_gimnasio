@@ -1,0 +1,22 @@
+h3 {
+  color: #5850ec;
+}
+p {
+  margin-bottom: 0;
+}
+#desc-admin {
+  font-size: .95rem;
+  color: rgba(0, 0, 0, .5);
+  margin-bottom: 10px;
+}
+main {
+  margin-top: 70px;
+}
+button span {
+  font-size: 1.15rem;
+}
+.card img {
+  width: 150px;
+  height: 170px;
+  border-radius: 50%;
+}
