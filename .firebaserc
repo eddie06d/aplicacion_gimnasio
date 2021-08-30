@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "app-gimnasio-35bda": {
+      "hosting": {
+        "app-gimnasio": [
+          "app-gimnasio-35bda"
+        ]
+      }
+    }
+  }
+}

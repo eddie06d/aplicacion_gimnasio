@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class LoginComponent implements OnInit {
+export class HomeComponent implements OnInit {
   cssUrl: string;
 
   constructor(public sanitizer: DomSanitizer) {

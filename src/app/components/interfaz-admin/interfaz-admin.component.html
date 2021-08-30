@@ -1,0 +1,78 @@
+<input type="checkbox" name="" id="sidebar_toggle">
+<div class="sidebar_own">
+  <div class="sidebar_brand">
+    <div class="brand_flex">
+      <img src="../../../assets/img/icon1.png" width="130px" alt="img-logo">
+      <div class="brand_icons">
+        <span class="las la-bell"></span>
+        <span class="las la-user-circle" (click)="showUserProfile()"></span>
+        <!-- <span class="las la-angle-down"></span> -->
+        <div class="user-settings" *ngIf="setting">
+          <a routerLink="/interfaz-admin/admin-profile" (click)="showUserProfile()"><span class="las la-user-cog">  User profile</span></a>
+          <span class="las la-sign-out-alt" (click)="showUserProfile()">  Sign out</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar_main">
+    <div class="sidebar_user">
+      <img src="../../../assets/img/admin.png" alt="img-user">
+      <div>
+        <h3>Eddie Huancahuire</h3>
+        <span>ejhuancahuire@gmail.com</span>
+      </div>
+    </div>
+    <div class="sidebar_menu">
+      <div class="menu_head">
+        <span>Dashboard</span>
+      </div>
+      <ul>
+        <li>
+          <a href="">
+            <span class="las la-balance-scale"></span>Finance
+          </a>
+        </li>
+        <li>
+          <a routerLink="/interfaz-admin/analytic-dashboard">
+            <span class="las la-chart-pie"></span>Analytics
+          </a>
+        </li>
+      </ul>
+      <div class="menu_head">
+        <span>Applications</span>
+      </div>
+      <ul>
+        <li>
+          <a href="">
+            <span class="las la-calendar"></span>Calendar
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <span class="las la-shopping-cart"></span>Ecommerce
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <span class="las la-users"></span>Users
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="main_content">
+  <header>
+    <div class="menu_toggle">
+      <label for="sidebar_toggle">
+        <span class="las la-bars"></span>
+      </label>
+    </div>
+    <div class="header_icons">
+      <span class="las la-search"></span>
+      <span class="las la-bookmark"></span>
+      <span class="las la-sms"></span>
+    </div>
+  </header>
+  <router-outlet></router-outlet>
+</div>

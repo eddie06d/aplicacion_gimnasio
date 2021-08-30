@@ -1,0 +1,78 @@
+<link rel="stylesheet" [href]="sanitizer.bypassSecurityTrustResourceUrl(cssUrl)">
+<main class="container py-4 px-3">
+  <div class="mb-4 d-flex justify-content-between">
+    <h3>Administrator Profile</h3>
+    <button class="btn btn-danger">
+      <i class="fas fa-user-times me-1"></i>
+      Delete account
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="../../../../assets/img/admin.png" alt="img-admin" class="card-img-top mx-auto mt-4">
+        <div class="card-body">
+          <p class="card-text text-center">Eddie Huancahuire</p>
+          <p class="card-text text-center" id="desc-admin">Principal Administrator of Gym RBE</p>
+          <button class="btn btn-success w-100" (click)="fileImage()">
+            <span class="las la-camera"> Update image</span>
+          </button>
+          <input type="file" id="upload-image" hidden>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title">Basic Info</p>
+          <div class="row my-3">
+            <div class="col">
+              <div class="form-floating">
+                <input type="text" class="form-control change" id="dni" placeholder="name@example.com" (input)="catchDNI($event)"
+                  [(ngModel)]="userProfile.dni" disabled>
+                <label for="dni">DNI</label>
+              </div>
+            </div>
+            <div class="col"></div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="firstName" placeholder="name@example.com"
+                [(ngModel)]="userProfile.firstName" disabled>
+                <label for="firstName">First Name</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="lastName" placeholder="name@example.com"
+                [(ngModel)]="userProfile.lastName" disabled>
+                <label for="lastName">Last Name</label>
+              </div>
+            </div>
+          </div>
+          <p class="card-title">Profile Info</p>
+          <div class="form-floating my-3">
+            <input type="email" class="form-control change" id="email" placeholder="name@example.com"
+            [(ngModel)]="userProfile.email" disabled>
+            <label for="email">Email</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control change" id="password" placeholder="name@example.com"
+            [(ngModel)]="userProfile.password" disabled>
+            <label for="password">Password</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control change" id="phoneNumber" placeholder="name@example.com"
+            [(ngModel)]="userProfile.phoneNumber" disabled>
+            <label for="phoneNumer">Phone number</label>
+          </div>
+          <button class="btn btn-primary float-end" (click)="updateProfile()">
+            <i class="{{ buttonUpdate.icon }} me-1"></i>
+            {{ buttonUpdate.text }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

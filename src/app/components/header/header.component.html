@@ -28,16 +28,12 @@
                 </ul>
               </li>
             </ul>
-            <form class="d-flex">
+            <form class="d-flex" *ngIf="searchLogin == 'si'">
               <input class="form-control me-sm-2" type="text" placeholder="Search products">
               <button class="btn btn-danger my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
             </form>
-            <!-- <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>        -->
           </div>
-          <button class="btn btn-danger m-3">
+          <button class="btn btn-danger m-3" *ngIf="searchLogin == 'si'">
             <a href="#" class="text-decoration-none text-white" routerLink ="/login">
               <i class="fas fa-user mx-1"></i>
               Login
