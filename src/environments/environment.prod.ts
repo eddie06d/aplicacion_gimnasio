@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   firestore: {
     apiKey: "AIzaSyAfBYMqiKKmgTk9nz0IvuPVPWKGHvoeTG0",
     authDomain: "app-gimnasio-35bda.firebaseapp.com",

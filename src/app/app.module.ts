@@ -19,11 +19,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { PrincipalComponent } from './components/principal/principal.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { CartComponent } from './components/cart/cart.component';
-import { ProductItemComponent } from './components/product-item/product-item.component';
-import { PantallaCartComponent } from './components/pantalla-cart/pantalla-cart.component';
-import { HeaderPrincipalComponent } from './components/header-principal/header-principal.component';
+import { ProductListComponent } from './components/principal/product-list/product-list.component';
+import { CartComponent } from './components/principal/cart/cart.component';
+import { ProductItemComponent } from './components/principal/product-item/product-item.component';
+import { PantallaCartComponent } from './components/principal/pantalla-cart/pantalla-cart.component';
+import { HeaderPrincipalComponent } from './components/principal/header-principal/header-principal.component';
+import { HomePrincipalComponent } from './components/principal/home-principal/home-principal.component';
 
 import { HomeAdminComponent } from './components/interfaz-admin/home-admin/home-admin.component';
 import { InterfazAdminComponent } from './components/interfaz-admin/interfaz-admin.component';
@@ -47,6 +48,7 @@ import { AdminProfileComponent } from './components/interfaz-admin/admin-profile
     InterfazAdminComponent,
     AdminProfileComponent,
     HeaderPrincipalComponent,
+    HomePrincipalComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,7 @@ import { AdminProfileComponent } from './components/interfaz-admin/admin-profile
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
     //NgxPayPalModule
   ],
   providers: [],

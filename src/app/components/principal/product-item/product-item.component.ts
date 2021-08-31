@@ -1,5 +1,5 @@
-import { MessageService } from './../../services/message.service';
-import { Product } from './../../models/product';
+import { MessageService } from '../../../services/message.service';
+import { Product } from '../../../models/product';
 import { Component, Input, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 @Component({

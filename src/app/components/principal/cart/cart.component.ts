@@ -1,7 +1,7 @@
-import { StorageService } from './../../services/storage.service';
-import { CartItemModel } from './../../models/cart-item-model';
-import { Product } from './../../models/product';
-import { MessageService } from './../../services/message.service';
+import { StorageService } from '../../../services/storage.service';
+import { CartItemModel } from '../../../models/cart-item-model';
+import { Product } from '../../../models/product';
+import { MessageService } from '../../../services/message.service';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 @Component({
