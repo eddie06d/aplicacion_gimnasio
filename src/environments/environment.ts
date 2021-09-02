@@ -5,12 +5,13 @@
 export const environment = {
   production: false,
   firestore: {
-    apiKey: "AIzaSyAfBYMqiKKmgTk9nz0IvuPVPWKGHvoeTG0",
-    authDomain: "app-gimnasio-35bda.firebaseapp.com",
-    projectId: "app-gimnasio-35bda",
-    storageBucket: "app-gimnasio-35bda.appspot.com",
-    messagingSenderId: "876130730677",
-    appId: "1:876130730677:web:6c3a2b984aad50b1e5b4fc"
+    apiKey: "AIzaSyAocs6LS_RQCnL1csoXOuUV6XtpyJyB47w",
+  authDomain: "bdgym-25be4.firebaseapp.com",
+  projectId: "bdgym-25be4",
+  storageBucket: "bdgym-25be4.appspot.com",
+  messagingSenderId: "405899336143",
+  appId: "1:405899336143:web:a51106df746b02b8badaba",
+  measurementId: "G-P5T4L3ERFJ"
   }
 };
 
