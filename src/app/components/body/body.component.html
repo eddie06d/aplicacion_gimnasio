@@ -6,7 +6,7 @@
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner">
+  <div class="carousel-inner">new 
       <div class="carousel-item active">
       <img src="../../../assets/img/Gym-Amigos2.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
@@ -37,7 +37,93 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
   </button>
-</div>     
+</div>    
+
+<!-- PRODUCTOS PARA EL HOME  -->
+
+<!-- NOVEDADES  -->
+  <div class="container p-4" >
+    <h2 class="titulo">NOVEDADES</h2>
+    <div class="row ">
+      <div class="row ">
+        <div class="col-6 col-md-6 col-lg-3 " *ngFor="let product of productsNovedades" id="Herramientas" >
+          <div class="card text-center mb-3 font-clase">
+            <img [src]="product.image" style="width: 100%;height: 250px;" class="card-img-top">
+            <div class="card-body">
+              <div class="p-1 text-white rounded-3 font-clase boton_descuento bg-danger" style="width: 65px;">5%</div>
+              <div class="text-center my-3 mb-0">
+                <h5 class="card-title py-2 font-clase" style="font-weight: 300; font-size: 15px;">{{product.nombre}}</h5>
+                <!--<p class="card-text">{{product.description}}</p>-->
+                <p class="card-text h4 font-clase" style="font-weight: 700; font-size: 25px;">S/. {{product.precio.toFixed(2)}}</p>
+              </div>
+            </div>
+            <div class="card-footer btn-group" style="padding: 0; background-color: white; border: 0;">
+              <button class="btn btn-dark font-clase" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="border-radius: 0%;font-weight: 300; font-size: 15px;" (click)="MostrarModal(product.$key)" >
+                <i class="fas fa-clipboard-list"></i> Mas informacion</button>
+            </div>
+          </div>       
+          </div>
+      </div>
+  </div>
+  </div>
+
+  <!-- MODAL -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">DESCRIPCION DEL PRODUCTO : </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img [src]= "productoModal.image" class="card-img-top" style="width: 100%;height: 350px;">
+        <p> NOMBRE :  {{productoModal.nombre}} </p>
+        <p> DESCRIPCION: {{productoModal.descripcion}} </p>
+        <p> PRECIO :  {{productoModal.precio}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+        <button  type="button" class="btn btn-primary" (click)="mostrarLogin()">Añadir al carrito</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTOS DE TIENDA - 4 CATEGORIAS  -->
+<div class="container p-4" id="Product" >
+  <h2> PRODUCTOS</h2>
+    <div class="row ">
+      <div class="row ">
+        <div class="col-6 col-md-6 col-lg-3 " *ngFor="let product of products | paginate: {itemsPerPage: 8,currentPage:pageActual }" id="Herramientas">
+          <div class="card text-center mb-3 font-clase">
+            <img [src]="product.image" class="card-img-top" style="width: 100%;height: 250px;">
+            <div class="card-body">
+        
+              <div class="p-1 rounded-3 font-clase boton_descuento bg-danger text-white" style="width: 65px;">30%</div>
+              <div class="text-center my-3 mb-0">
+                <h5 class="card-title py-2 font-clase" style="font-weight: 300; font-size: 15px;">{{product.nombre}}</h5>
+                <!--<p class="card-text">{{product.description}}</p>-->
+                <p class="card-text h4 font-clase" style="font-weight: 700; font-size: 25px;">S/. {{product.precio.toFixed(2)}}</p>
+              </div>
+            </div>
+            <div class="card-footer btn-group" style="padding: 0; background-color: white; border: 0;">
+              <button class="btn bg-dark font-clase text-white" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="border-radius: 0%;font-weight: 300; font-size: 15px;" (click)="MostrarModal(product.$key)">    
+                <i class="fas fa-clipboard-list"></i> Mas informacion</button>
+            </div>
+          </div>
+      </div>
+        <div class="col-12 ">
+          <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- PROXIMAMENTE  -->
+<!-- <div class="container">
+  <h2>PROXIMAMANTE....</h2>
+</div> -->
+
 <!-- SOBRE NOSOTROS  -->
 <div class="beneficios section-content" id="nosotros">
   <div class="row">
@@ -57,7 +143,7 @@
 
 <!-- TARJETAS DE CONTENIDO - SERVICIOS -->
 <div class="container mt-4" id="servicios">
-  <h2 class="text-light py-3"><b>SERVICIOS</b></h2>
+  <h2 class="py-3"><b>SERVICIOS</b></h2>
   <div class="row px-5">
       <div class="col-md-4 col-12">
         <div class="card text-center mb-3 border-dark">

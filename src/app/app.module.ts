@@ -30,6 +30,10 @@ import { HomeAdminComponent } from './components/interfaz-admin/home-admin/home-
 import { InterfazAdminComponent } from './components/interfaz-admin/interfaz-admin.component';
 import { AdminProfileComponent } from './components/interfaz-admin/admin-profile/admin-profile.component';
 
+// PAGINATION
+import {NgxPaginationModule} from 'ngx-pagination';
+import { GestionProductsComponent } from './components/interfaz-admin/gestion-products/gestion-products.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +52,8 @@ import { AdminProfileComponent } from './components/interfaz-admin/admin-profile
     InterfazAdminComponent,
     AdminProfileComponent,
     HeaderPrincipalComponent,
-    HomePrincipalComponent
+    HomePrincipalComponent,
+    GestionProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,7 @@ import { AdminProfileComponent } from './components/interfaz-admin/admin-profile
     HttpClientModule,
     AppRoutingModule,
     //NgxPayPalModule
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

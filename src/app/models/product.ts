@@ -1,16 +1,22 @@
 export class Product {
     $key: number;
-    name: string;
-    category: string;
-    description: string;
-    price: number;
-    imageUrl: string;
+    nombre: string;
+    categoria: string;
+    descripcion: string;
+    precio: number;
+    image: string;
+    // Atributo para determinar en que seccion va el producto 
+    tipo  : string ;  
+    stock : number;    
 
-    constructor(id, name, description, price, imageUrl) {
+    constructor(id, name,category,description, price, imageUrl,tipo,stock) {
         this.$key = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.imageUrl = imageUrl;
+        this.nombre = name; 
+        this.categoria = category;
+        this.descripcion = description;
+        this.precio = price;
+        this.image = imageUrl;
+        this.tipo = tipo;
+        this.stock = stock;
     }
 }

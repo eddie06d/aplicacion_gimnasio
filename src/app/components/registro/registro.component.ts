@@ -26,7 +26,7 @@ export class RegistroComponent implements OnInit {
 
   registerUser(): void {
     const inputNames = document.querySelector("#nombres") as HTMLInputElement;
-    this.userService.createUser({ nombres: inputNames.value, ...this.form.value}).then(() => console.log('User created correctly'));
+    this.userService.createProduct({ nombres: inputNames.value, ...this.form.value}).then(() => console.log('User created correctly'));
     Swal.fire({
       icon: 'success',
       title: 'Usuario registrado exitosamente',

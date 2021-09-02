@@ -107,7 +107,7 @@ header {
     left: 280px;
     width: calc(100% - 280px);
     top: 0;
-    /* z-index: 20; */
+    /* z-index: 20;  */
     box-shadow: 4px 4px 10px rgba(0,0,0,.1);
     transition: left 400ms;
 }
@@ -136,6 +136,7 @@ header {
   padding: 5px 3px;
   width: 125px;
   border-radius: 4px;
+  /* z-index:-100; */
 }
 .user-settings a {
   color: #fff;

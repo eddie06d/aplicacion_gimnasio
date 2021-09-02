@@ -8,9 +8,9 @@ export class CartItemModel {
     qty: number;
     constructor(product: Product) {
         this.productId = product.$key;
-        this.productName = product.name;
-        this.productImgUrl = product.imageUrl;
-        this.productPrice = product.price;
+        this.productName = product.nombre;
+        this.productImgUrl = product.image;
+        this.productPrice = product.precio;
         this.qty = 1;
     }
 }

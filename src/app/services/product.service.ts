@@ -1,23 +1,57 @@
-
 import { Product } from './../models/product';
 import { Injectable } from '@angular/core';
+
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  products: Product [] = [
-    new Product(1, 'Mancuernas hexagonales con recubrimiento de caucho Pesas de 5 Kg', 'lorem impsum', 170.00, 'https://http2.mlstatic.com/D_NQ_NP_795914-MPE44447127514_122020-O.jpg'),
-    new Product(2, 'Pull up bar Barra de dominadas para puerta', 'lorem ipsum', 79.00, 'https://mirfitness.com.ar/wp-content/uploads/2228.jpg'),
-    new Product(3, 'Barra Z cromada importada de 150cm', 'lorem ipsum', 99.00, 'https://www.alphagym.store/wp-content/uploads/2020/10/61bgjXw-15L._AC_SX679_.jpg'),
-    new Product(4, 'Barra multifuncional 2 en 1 para dominadas , soporte 200kg', 'lorem ipsum', 149.00, 'https://www.mercadazo.com.mx/116358-large_default/barra-dominadas-gym-abdominales-centurfit-ejercicio-pared.jpg'),
-    new Product(5, 'Barra Z cromada importada de 150cm', 'lorem ipsum', 99.00, 'https://www.alphagym.store/wp-content/uploads/2020/10/61bgjXw-15L._AC_SX679_.jpg'),
-    new Product(6, 'Pull up bar Barra de dominadas para puerta', 'lorem ipsum', 79.00, 'https://mirfitness.com.ar/wp-content/uploads/2228.jpg'),
-    new Product(7, 'Mancuernas hexagonales con recubrimiento de caucho Pesas de 5 Kg', 'lorem impsum', 170.00, 'https://http2.mlstatic.com/D_NQ_NP_795914-MPE44447127514_122020-O.jpg'),
-    new Product(8, 'Pull up bar Barra de dominadas para puerta', 'lorem ipsum', 79.00, 'https://mirfitness.com.ar/wp-content/uploads/2228.jpg'),
-  ];
-  constructor() { }
-  getProducts(): Product[] {
-    return this.products;
+  productosCollection: AngularFirestoreCollection<Product>;
+
+  constructor(private db: AngularFirestore, private storage: AngularFireStorage) {
+    this.productosCollection = db.collection('productos', ref => ref.orderBy('fecCreacion', 'asc'));
   }
+  getProductos(): Observable<any[]> {
+    return this.db.collection('productos').snapshotChanges();
+  }
+
+  createProduct(product): Promise<any> {
+    return this.db.collection('productos').add(product);
+  }
+
+  updateProduct(documentId: string, data: any): Promise<void> {
+    return this.db.collection('productos').doc(documentId).set(data);
+  }
+
+  deleteProduct(documentId: string): Promise<void> {
+    return this.db.collection('productos').doc(documentId).delete();
+  }
+
+  uploadImage(image: any): Promise<string> {
+    const filePath = `products/${image.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, image);
+    return new Promise(resolve => {
+      task.snapshotChanges().pipe(finalize(() =>  {
+        fileRef.getDownloadURL().subscribe(url => {
+          const ga = url;
+          resolve(ga);
+          return;
+        });
+      })).subscribe();
+    });
+  }
+
+  deleteImage(url: string): Promise<string> {
+    return new Promise(resolve => {
+      this.storage.refFromURL(url).delete().subscribe(() => resolve('ok'));
+    });
+  }
+
+
 }

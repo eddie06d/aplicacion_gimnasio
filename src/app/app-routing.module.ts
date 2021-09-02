@@ -9,6 +9,7 @@ import { PantallaCartComponent } from './components/principal/pantalla-cart/pant
 import { PrincipalComponent } from './components/principal/principal.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { HomePrincipalComponent } from './components/principal/home-principal/home-principal.component';
+import { GestionProductsComponent } from './components/interfaz-admin/gestion-products/gestion-products.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'interfaz-admin', component: InterfazAdminComponent, children: [
     { path: '', redirectTo: 'analytic-dashboard', pathMatch: 'full' },
     { path: 'analytic-dashboard', component: HomeAdminComponent },
-    { path: 'admin-profile', component: AdminProfileComponent }
+    { path: 'admin-profile', component: AdminProfileComponent },
+    { path: 'gestion-products', component: GestionProductsComponent },
   ] }
 ];
 @NgModule({

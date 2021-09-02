@@ -1,13 +1,11 @@
-  
-<div class="card text-center mb-3 font-clase">
-    <img [src]="product.imageUrl" class="card-img-top">
+  <div class="card text-center mb-3 font-clase">
+    <img [src]="product.image" class="card-img-top" style="width: 100%;height: 250px;">
     <div class="card-body">
-
       <div class="bg-success p-1 text-white rounded-3 font-clase" style="width: 100px;"> En Stock</div>
       <div class="text-center my-3 mb-0">
-        <h5 class="card-title py-2 font-clase" style="font-weight: 300; font-size: 15px;">{{product.name}}</h5>
+        <h5 class="card-title py-2 font-clase" style="font-weight: 300; font-size: 15px;">{{product.nombre}}</h5>
         <!--<p class="card-text">{{product.description}}</p>-->
-        <p class="card-text h4 font-clase" style="font-weight: 700; font-size: 25px;">S/. {{product.price.toFixed(2)}}</p>
+        <p class="card-text h4 font-clase" style="font-weight: 700; font-size: 25px;">S/. {{product.precio.toFixed(2)}}</p>
       </div>
     </div>
     <div class="card-footer btn-group" style="padding: 0; background-color: white; border: 0;">
@@ -15,3 +13,14 @@
         <i class="fas fa-cart-plus"></i> Añadir al carrito</button>
     </div>
   </div>
+
+
+
+
+
+
+
+
+
+
+  
