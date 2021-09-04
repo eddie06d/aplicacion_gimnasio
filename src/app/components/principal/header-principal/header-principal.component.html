@@ -3,17 +3,17 @@
     <div class="ocultar">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class=" container container-fluid">
-              <a class="navbar-brand" routerLink ="/"><img src="../../../assets/img/Imagen2.png" width="200"></a>
+              <a class="navbar-brand" routerLink ="/principal"><img src="../../../assets/img/Imagen2.png" width="200"></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                   <ul class="navbar-nav">
                   <li class="nav-item  active">
-                      <a class="nav-link" >Tienda</a>
+                      <a class="nav-link" routerLink ="/principal" >Tienda</a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link text-white">Contacto</a>
+                      <a class="nav-link text-white" style="cursor: pointer;">Contacto</a>
                   </li>
                   </ul>
               </div>
@@ -29,7 +29,7 @@
                     </button>            
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item"><i class="fa fa-fw fa-user"></i> Editar Perfil</a></li>
-                        <li><a class="dropdown-item" routerLink ="/cart"><i class="fas fa-shopping-cart"></i> Mi Carrito</a></li>
+                        <li><a class="dropdown-item" routerLink ="/principal/cart"><i class="fas fa-shopping-cart"></i> Mi Carrito</a></li>
                         <li class="divider"></li>
                         <li><a class="dropdown-item" routerLink ="/"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a></li>
                     </ul>
@@ -49,12 +49,12 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <!-- LADO CENTRO- LOGOTIPO-->
-                <a href="" class="navbar-brand logo d-lg-none">
+                <a routerLink ="/principal/home-product" class="navbar-brand logo d-lg-none">
                     <span role="img" aria-label="Logo of La Libreria" title="La Libreria"><img src="../../../assets/img/Imagen2.png"  width="200" class="img img-fluid" alt="gym" loading="lazy"></span>
                 </a>
                 <!-- LADO DERECHO- CARRITO-->
                 <div class="tp-account-info">
-                    <a class="" style="margin-right: 13px;">
+                    <a routerLink ="/principal/cart" style="margin-right: 13px;">
                         <i class="fas fa-shopping-cart text-light"></i>
                     </a>
                 </div>
@@ -62,12 +62,12 @@
                 <div id="top_menu_collapse" class="navbar-collapse order-last order-lg-0 collapse">
                     <ul id="top_menu" class="nav navbar-nav flex-grow-1 ">
                         <li class="nav-item">
-                            <a href="" class="nav-link text-light">
+                            <a routerLink ="/principal" class="nav-link text-light">
                                 <span>Tienda</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link text-light">
+                            <a  class="nav-link text-light" style="cursor: pointer;">
                                 <span>Contacto</span>
                             </a>
                         </li>
