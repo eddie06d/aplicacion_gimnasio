@@ -40,7 +40,10 @@
                         </div>
                       </td>
                       <td class="text-center py-3" style="font-size: 14px;font-weight: 400;color: #777777;">S/. {{product.productPrice.toFixed(2)}}</td>
-                      <td class="text-center py-3"> {{product.qty}}</td>
+                      <td class="text-center py-3"> 
+                        <button class="btn border p-0 px-2" (click)="MenosCant(i)">-</button>
+                        <input type="text" class="w-25 text-center form-group" value="{{product.qty}}" disabled>
+                        <button class="btn border p-0 px-2" (click)="MasCant(i)">+</button>
                       <td class="text-center py-3 text-danger" style="font-weight: 700;"> S/. {{(product.qty * product.productPrice).toFixed(2) | number : '1.1-2'}}</td>
                     </tr>
                   </tbody>
@@ -57,7 +60,23 @@
                     <h3 class="p-3 pb-5 pt-4" style="font-weight: 700;">TOTAL DEL CARRITO</h3>
                         <div class="row px-3 h6">
                             <div class="col-md-7" style="font-weight: 700;"><span>Subtotal</span></div>
-                            <div class="col-md-5 text-end ">S/. {{total.toFixed(2)}}</div>
+                            <div class="col-md-5 text-end ">S/. {{subtotal.toFixed(2)}}</div>
+                        </div>
+                        <hr>
+                        <div class="row px-3 h6">
+                            <div class="col-md-4" style="font-weight: 700;"><span>Envio</span></div>
+                            <div class="col-md-8 text-end">
+                            <div class="form-check d-flex flex-row-reverse gap-4 pt-1" style="font-size: 13px;">
+                                <input class="form-check-input" type="radio" checked name="img" id="url" value="radio1" (change)="agregarExtra(false)">
+                                <label class="form-check-label" for="url" >Retiro en Tienda</label>
+                            </div>
+                            <div class="form-check d-flex flex-row-reverse gap-4 py-2" style="font-size: 13px;">
+                                <input class="form-check-input" type="radio" name="img" id="sub"  value="radio2" (change)="agregarExtra(true)">
+                                <label class="form-check-label" for="sub" >Despacho a Domicilio:</label>
+                            </div>
+                            <span class="text-danger"><b>S/. 10.00</b></span><br>
+                            <span class="text-dark"style="font-size: 13px;"><b>Envio a Lima</b></span>
+                            </div>
                         </div>
                         <hr>
                         <div class="row px-3 h5" style="font-weight: 700;">
@@ -69,14 +88,58 @@
                             <button class="btn btn-warning" style="border-radius: 0%;font-weight: 300; font-size: 15px;">
                                 Paga con <img src="../../../assets/img/list-productos/pesas_barras/logo-Paypal.png" width="80" height="40"></button>
                            <hr>
-                           <button class="btn btn-danger py-3 mb-4" style="border-radius: 0%;font-weight: 300; font-size: 15px;">
+                           <button class="btn btn-danger py-3 mb-4" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="border-radius: 0%;font-weight: 300; font-size: 15px;">
                                FINALIZAR COMPRA</button>
                         </div>
                     </div>
             </div>
         </div>
-    </div>
-
-    <!--<ngx-paypal [config]="payPalConfig"></ngx-paypal>-->
-    
+    </div><!--<ngx-paypal [config]="payPalConfig"></ngx-paypal>-->
 </div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-title h4" id="staticBackdropLabel">Registrar Facturacion</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body mb-3">
+            <form [formGroup]="formu"(ngSubmit)="enviarFactura()" >
+                <div class="form-group">
+                    <label for="dni" class="form-label">DNI</label>
+                    <input type="text" formControlName="dni" id="dni" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="correo" class="form-label">Correo</label>
+                    <input type="text" formControlName="correo" id="correo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="dir" class="form-label">Dirección</label>
+                    <input type="text" formControlName="dir" id="dir" class="form-control">
+                </div>
+                <div class="row g-2">
+                    <div class="col-md">
+                        <div class="form-group mb-3">
+                            <label for="pais" class="form-label">Pais</label>
+                            <input type="text" formControlName="pais" id="pais" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class=" mb-3">
+                            <label for="dep" class="form-label">Departamento</label>
+                            <input type="text" formControlName="dep" id="dep" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <!-- BOTON PAGAR-->
+                <div class="d-grid gap-2">
+                    <button class="btn btn-danger btn-block mt-2" type="submit" >
+                      Pagar S/. {{total.toFixed(2)}}
+                    </button>
+                  </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
