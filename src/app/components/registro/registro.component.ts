@@ -43,7 +43,8 @@ export class RegistroComponent implements OnInit {
     const inputNames = document.querySelector("#nombres") as HTMLInputElement;
     const { correo, password, dni } = this.form.value;
     await this.loginService.registrarse(correo, password);
-    this.userService.createUser({ nombres: inputNames.value, correo, dni, fecCreacion: new Date().toLocaleDateString(), tipo: 'usuario normal', estado: true }).then(() => {
+    this.userService.createUser({ nombres: inputNames.value, correo, dni, fecCreacion: new Date().toLocaleDateString(),
+      tipo: 'usuario normal', estado: true }).then(() => {
       const user = StringFunctions.filterUsersByDni(dni, this.usuarios);
       localStorage.setItem('user', JSON.stringify(user));
       Swal.fire({
@@ -51,7 +52,7 @@ export class RegistroComponent implements OnInit {
         title: 'Usuario registrado exitosamente',
         showConfirmButton: false,
         timer: 1500
-      }).then(() => this.router.navigate(["/principal"]));
+      }).then(() => this.router.navigate(["/login"]));
     }).catch(error => {
       Swal.fire({
         icon: 'error',

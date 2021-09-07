@@ -9,7 +9,7 @@ export class Product {
     tipo  : string ;  
     stock : number;    
 
-    constructor(id, name,category,description, price, imageUrl,tipo,stock) {
+    constructor(id,name,category,description, price, imageUrl,tipo,stock) {
         this.$key = id;
         this.nombre = name; 
         this.categoria = category;

@@ -66,4 +66,41 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  loginGoogle(){
+    
+    this.loginService.loginGoogle().then(async () => {
+        // localStorage.setItem('user', JSON.stringify(user));
+        const userP = {
+          // dni: user.dni,
+          // nombres: user.nombre,
+          // correo: user.correo,
+          // fecCreacion: user.fecCreacion,
+          // estado: true
+        };
+        // await this.userService.updateUser(user.id, userP);
+        Swal.fire({
+          icon: 'success',
+          title: 'Inicio de sesión exitoso',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => this.router.navigate(["/principal"]))
+      }).catch(error => {
+        Swal.fire({
+          icon: 'error',
+          title: error.message,
+          timer: 3000
+        });
+      });
+
+
+  }
+  loginTwitter(){
+
+
+  }
+  loginGitHub(){
+
+    
+  }
+
 }

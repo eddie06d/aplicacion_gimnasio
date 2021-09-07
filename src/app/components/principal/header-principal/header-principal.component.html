@@ -19,9 +19,15 @@
             </div>
             <div class="mx-auto"><!-- PARTE DERECHA(CARRITO-LOGIN)-->
                 <!-- ICON- CARRITO-->
-                <a class=" text-decoration-none text-light m-2 p-2 px-3" routerLink ="/principal/cart">
-                  <i class="fas fa-shopping-cart"></i>
-                </a>
+                <button type="button" class="btn  position-relative boton_carrito m-4">
+                    <a class=" text-decoration-none text-light  p-2 px-3" routerLink ="/principal/cart">
+                        <i class="fas fa-shopping-cart"></i>
+                      </a>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      
+                      <!-- <span class="visually-hidden">unread messages</span> -->
+                    </span>
+                </button>
                 <!-- BUTTON LOGIN-->
                 <div class=" btn-group" role="group">
                   <button id="btnGroupDrop1" type="button" class="btn btn-danger m-3 px-3 dropdown-toggle"data-bs-toggle="dropdown" aria-expanded="false">

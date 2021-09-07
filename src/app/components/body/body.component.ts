@@ -14,10 +14,10 @@ export class BodyComponent implements OnInit {
 
   products: Product[] = [];
   productsNovedades : Product [] = [
-    new Product(9,'Suplemento Poder','Suplemento', 'lorem ipsum', 89.99, 'https://img4.localgymsandfitness.com/619/345/2340358896193452.jpg','Novedades',70),
-    new Product(10,'Suplemento Potencial', 'Suplemento', 'lorem ipsum', 59.99, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ3D8I4pomyaFiYMR-ycchh7T5yun3JYHwxQ&usqp=CAU','Novedades',58),
-    new Product(11,'Suplemento Musculo', 'Suplemento', 'lorem ipsum', 77.99, 'https://sc01.alicdn.com/kf/Hd8f8cb1113ea4c978c5c6b0756535645N.jpg','Novedades',47),
-    new Product(12,'Suplemento Esteroiden', 'Suplemento', 'lorem ipsum', 84.99, 'https://img4.localgymsandfitness.com/619/345/2340358896193452.jpg','Novedades',58),
+    // new Product(9,'Suplemento Poder','Suplemento', 'lorem ipsum', 89.99, 'https://img4.localgymsandfitness.com/619/345/2340358896193452.jpg','Novedades',70),
+    // new Product(10,'Suplemento Potencial', 'Suplemento', 'lorem ipsum', 59.99, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ3D8I4pomyaFiYMR-ycchh7T5yun3JYHwxQ&usqp=CAU','Novedades',58),
+    // new Product(11,'Suplemento Musculo', 'Suplemento', 'lorem ipsum', 77.99, 'https://sc01.alicdn.com/kf/Hd8f8cb1113ea4c978c5c6b0756535645N.jpg','Novedades',47),
+    // new Product(12,'Suplemento Esteroiden', 'Suplemento', 'lorem ipsum', 84.99, 'https://img4.localgymsandfitness.com/619/345/2340358896193452.jpg','Novedades',58),
   ];
   isTipoCorrecto: boolean;
   isCatCorrecta : boolean;
@@ -39,6 +39,11 @@ export class BodyComponent implements OnInit {
     })
     })
   }
+  loadNewProducts() : void{
+    console.log('cargando productos nuevos');
+    this.productsNovedades = this.products.slice(1,5);  // Orden de productos
+  }
+
   mostrarLogin(){
   
     let btnClose = document.querySelector("#close") as HTMLButtonElement;
@@ -65,10 +70,7 @@ export class BodyComponent implements OnInit {
   MostrarModal(id : number):void{
     
     let producto = StringFunctions.BuscarProducto(id,this.products);
-
-    
     this.productoModal = {...producto};
-    
-
+  
   }
 }

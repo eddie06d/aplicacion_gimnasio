@@ -30,13 +30,17 @@
                     <hr>
                     <p class="text-center h6">Entrar con</p>
                     <div class="d-flex justify-content-center gap-2 mt-3">
-                        <button class="btn btn-light btn-block" type="button" style="border-radius: 50%;">
+                        <button class="btn btn-light btn-block" type="button" style="border-radius: 50%;"
+                        (click)="loginGoogle()">
                             <i class="fab fa-google"></i>
                         </button>
-                        <button class="btn btn-light btn-block" type="button" style="border-radius: 50%;">
+                        <button class="btn btn-light btn-block" type="button" style="border-radius: 50%;"
+                        (click)="loginTwitter()">
                             <i class="fab fa-twitter "></i>
                         </button>
-                        <button class="btn btn-light btn-block" type="button" style="border-radius: 50%;">
+                        <button class="btn btn-light btn-block" type="button" style="border-radius: 50%;"
+                        
+                        (click)="loginGitHub()">
                             <i class="fab fa-github"></i>
                         </button>
                     </div>

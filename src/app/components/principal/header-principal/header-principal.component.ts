@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HeaderPrincipalComponent implements OnInit {
   usuarios: any[] = [];
-  nombre: string = 'Bryan';
+  nombre: string = '';
   currentUser: any = {};
 
   constructor(private loginService: LoginService, private router: Router, private userService: UserService) { }
