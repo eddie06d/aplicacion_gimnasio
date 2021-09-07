@@ -1,6 +1,6 @@
 import { Product } from "../models/product";
 export class StringFunctions {
-  // Devuelve un array de palabras separandolos por espacios y haciendo 1º letra mayuscula y el resto minuscula
+  // Devuelve un array de palabras separandolos por espacios y haciendo 1ยบ letra mayuscula y el resto minuscula
   static capitalizePhrase(phrase: string): string {
     let words = phrase.split(' ');
     for(let i=0; i<words.length; i++) {
@@ -12,23 +12,17 @@ export class StringFunctions {
   }
 
   static BuscarProducto(id : number, productos : Product []) : Product{
-  
     for(let i=0;i<productos.length;i++){
-        
         if(productos[i].$key === id){
-
             return productos[i];
-            break;
         }
     }
     return null;
   }
 
   static FiltraProdByCategoria(productos : Product [], categoria : string) : Product[] {
-
     let Prods =  [];
     for(let value of productos){
-
           if(value.categoria == categoria){
             Prods.push(value);
           }
@@ -36,7 +30,19 @@ export class StringFunctions {
     return Prods;
   }
 
+  static filterUsersByDni(dni : string, users: any[]): any {
+    for(let user of users) {
+      if(user.dni == dni) return user;
+    }
+    return null;
+  }
 
-
+  static filterUsersByEmail(email : string, users: any[]): any {
+    for(let user of users) {
+      if(user.correo == email) return user;
+    }
+    return null;
+  }
 
 }
+

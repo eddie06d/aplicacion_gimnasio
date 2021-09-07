@@ -8,17 +8,22 @@
         <div class="card bg-dark p-2 ">
           <div class="card-body text-danger ">
             <h1 class="text-center my-4 h2"><b>REGISTRARTE</b></h1>
-            <form [formGroup]="form" (ngSubmit)="registerUser()" class="pt-3">
+            <form [formGroup]="form" (ngSubmit)="registerUser()" class="pt-3" autocomplete="off">
               <div class="form-group mb-3">
                 <label class="form-label">DNI</label>
                 <div class="input-group">
                   <span class="input-group-text bg-danger"><i class="far fa-id-card text-white"></i></span>
-                  <input type="text" (input)="catchDNI($event)" formControlName="dni" name="dni" class="form-control"
-                    autofocus>
+                  <input type="text" (input)="catchDNI($event)" formControlName="dni"  id="dni" class="form-control" [ngClass]="{ 'is-valid': form.controls.dni.valid && validDNI, 'is-invalid': (!form.controls.dni.valid || !validDNI) && (form.controls.dni.touched || form.controls.dni.dirty)}">
+                  <div class="valid-feedback" id="dni">
+                    Correcto!
+                  </div>
+                  <div class="invalid-feedback" id="dni">
+                    {{ textWrongDNI }}
+                  </div>
                 </div>
               </div>
               <div class="form-group mb-3">
-                <label class="form-label">Nombre de usuario</label>
+                <label class="form-label">Nombres completos</label>
                 <div class="input-group">
                   <span class="input-group-text bg-danger"><i class="fas fa-user text-white"></i></span>
                   <input type="text" id="nombres" class="form-control" disabled>
@@ -28,20 +33,38 @@
                 <label class="form-label">Correo electronico</label>
                 <div class="input-group">
                   <span class="input-group-text bg-danger"><i class="far fa-envelope text-white"></i></span>
-                  <input type="email" formControlName="correo" name="email" class="form-control" autofocus>
+                  <input type="text" formControlName="correo" name="email" class="form-control" [ngClass]="{ 'is-valid': form.controls.correo.valid, 'is-invalid': !form.controls.correo.valid && (form.controls.correo.touched || form.controls.correo.dirty)}">
+                  <div class="valid-feedback" id="email">
+                    Correcto!
+                  </div>
+                  <div class="invalid-feedback" *ngIf="form.controls.correo.errors?.required">
+                    Campo requerido.
+                  </div>
+                  <div class="invalid-feedback" *ngIf="form.controls.correo.errors?.email">
+                    Email inválido.
+                  </div>
                 </div>
               </div>
               <div class="form-group  mb-3">
                 <label>Contraseña</label>
                 <div class="input-group">
                   <span class="input-group-text bg-danger"><i class="fas fa-lock text-white"></i></span>
-                  <input type="password" formControlName="password" name="clave" class="form-control">
+                  <input type="password" formControlName="password" [ngClass]="{ 'is-valid': form.controls.password.valid, 'is-invalid': !form.controls.password.valid && (form.controls.password.touched || form.controls.password.dirty)}" id="clave" class="form-control">
+                  <div class="valid-feedback" id="clave">
+                    Correcto!
+                  </div>
+                  <div class="invalid-feedback" *ngIf="form.controls.password.errors?.required">
+                    Campo requerido.
+                  </div>
+                  <div class="invalid-feedback" *ngIf="form.controls.password.errors?.minlength">
+                    La contraseña debe tener como minimo 6 caracteres.
+                  </div>
                 </div>
               </div>
               <p class="text-light h6">Al hacer clic en "Registrarte", aceptas nuestras Condiciones, la Política de
                 datos y la Política de cookies.</p>
               <div class="d-grid gap-2">
-                <button class="btn btn-danger btn-block mt-2" type="submit" [disabled]="!form.valid">
+                <button class="btn btn-danger btn-block mt-2" type="submit" [disabled]="!form.valid || !validDNI">
                   Registrarte
                 </button>
               </div>
