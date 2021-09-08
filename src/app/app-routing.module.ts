@@ -10,6 +10,8 @@ import { PrincipalComponent } from './components/principal/principal.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { HomePrincipalComponent } from './components/principal/home-principal/home-principal.component';
 import { GestionProductsComponent } from './components/interfaz-admin/gestion-products/gestion-products.component';
+import { FinanceDashboardComponent } from './components/interfaz-admin/finance-dashboard/finance-dashboard.component';
+import { GestionUsersComponent } from './components/interfaz-admin/gestion-users/gestion-users.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,9 +24,12 @@ const routes: Routes = [
   ]},
   { path: 'interfaz-admin', component: InterfazAdminComponent, children: [
     { path: '', redirectTo: 'analytic-dashboard', pathMatch: 'full' },
+    { path: 'finance-dashboard', component: FinanceDashboardComponent },
     { path: 'analytic-dashboard', component: HomeAdminComponent },
     { path: 'admin-profile', component: AdminProfileComponent },
     { path: 'gestion-products', component: GestionProductsComponent },
+    { path: 'gestion-users', component: GestionUsersComponent },
+    { path: '**', redirectTo: 'analytic-dashboard' }
   ] }
 ];
 @NgModule({

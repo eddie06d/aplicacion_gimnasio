@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 //imports from Angular-Firebase
 import { environment } from '../environments/environment';
@@ -33,6 +35,8 @@ import { AdminProfileComponent } from './components/interfaz-admin/admin-profile
 // PAGINATION
 import {NgxPaginationModule} from 'ngx-pagination';
 import { GestionProductsComponent } from './components/interfaz-admin/gestion-products/gestion-products.component';
+import { GestionUsersComponent } from './components/interfaz-admin/gestion-users/gestion-users.component';
+import { FinanceDashboardComponent } from './components/interfaz-admin/finance-dashboard/finance-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -54,18 +58,22 @@ import { GestionProductsComponent } from './components/interfaz-admin/gestion-pr
     HeaderPrincipalComponent,
     HomePrincipalComponent,
     GestionProductsComponent,
+    GestionUsersComponent,
+    FinanceDashboardComponent,
   ],
   imports: [
     BrowserModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firestore),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     //NgxPayPalModule
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

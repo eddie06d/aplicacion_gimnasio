@@ -1,0 +1,46 @@
+<link rel="stylesheet" [href]="sanitizer.bypassSecurityTrustResourceUrl(cssUrl)">
+<main>
+  <h1>Gestión de Usuarios</h1>
+  <div class="d-flex justify-content-between">
+    <div class="form-group">
+      <label for="" class="form-label">Filtrar por:</label>
+      <select class="form-select" (change)="filter($event)">
+        <option value="" selected>Selecciona una opción</option>
+        <option value="email">Email</option>
+        <option value="nombres">Nombres</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="" class="form-label">{{ labelValue }}</label>
+      <input type="text" class="form-control" [placeholder]="placeholderValue">
+    </div>
+  </div>
+  <table class="table table-striped mt-5">
+    <thead>
+      <th>Nro</th>
+      <th>Nombres</th>
+      <th>DNI</th>
+      <th>Correo</th>
+      <th>Estado</th>
+      <th>Acciones</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Eddie Huancahuire</td>
+        <td>70882033</td>
+        <td>ejhuancahuire@gmail.com</td>
+        <td><span class="badge bg-success" style="font-size: .8rem;">Online</span></td>
+        <td><button class="btn btn-outline-danger btn-sm"><i class="las la-user-alt-slash"></i>  Deshabilitar</button></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Juan Perez</td>
+        <td>70882033</td>
+        <td>jperez@gmail.com</td>
+        <td><span class="badge bg-danger" style="font-size: .8rem;">Offline</span></td>
+        <td><button class="btn btn-outline-danger btn-sm"><i class="las la-user-alt-slash"></i>  Deshabilitar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</main>
