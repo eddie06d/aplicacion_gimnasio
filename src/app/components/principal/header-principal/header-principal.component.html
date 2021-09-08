@@ -38,7 +38,7 @@
               <!-- BUTTON LOGIN-->
               <div class=" btn-group" role="group">
                 <button id="btnGroupDrop1" type="button" class="btn btn-danger m-3 px-3 dropdown-toggle"data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://image.flaticon.com/icons/png/512/206/206853.png" width="35"><span class="m-2">{{ nombre }}</span><span class="caret"></span>
+                    <img [src]="currentUser.photoURL"  width="35"><span class="m-2">{{ currentUser.displayName}}</span><span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <li><a class="dropdown-item"><i class="fa fa-fw fa-user"></i> Editar Perfil</a></li>

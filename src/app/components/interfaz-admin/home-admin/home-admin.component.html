@@ -60,4 +60,44 @@
       </div>
     </div>
   </div>
+  <h2 style="margin-top: 1.3em;">Statistical Graphics</h2>
+  <div class="zone-graphic">
+    <div class="chart">
+      <div>
+        <ngx-charts-line-chart
+          [view]="view"
+          [scheme]="colorScheme"
+          legend="true"
+          showXAxisLabel="true"
+          showYAxisLabel="true"
+          xAxis="true"
+          yAxis="true"
+          xAxisLabel="Month"
+          yAxisLabel="New users"
+          timeline="true"
+          [results]="dataUsers"
+          (select)="onSelect($event)"
+          (activate)="onActivate($event)"
+          (deactivate)="onDeactivate($event)"
+          >
+        </ngx-charts-line-chart>
+      </div>
+    </div>
+    <div class="chart">
+      <ngx-charts-area-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        legend="true"
+        showXAxisLabel="true"
+        showYAxisLabel="true"
+        xAxis="true"
+        yAxis="true"
+        xAxisLabel="Month"
+        yAxisLabel="New products"
+        timeline="true"
+        [results]="dataProducts"
+        (select)="onSelect($event)">
+      </ngx-charts-area-chart>
+    </div>
+  </div>
 </main>

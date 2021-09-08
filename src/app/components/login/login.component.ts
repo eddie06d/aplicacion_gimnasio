@@ -66,38 +66,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginGoogle(){
-    
-    this.loginService.loginGoogle().then(async () => {
-        console.log(this.loginService.usuario);
-        const userP = {...this.loginService.usuario};
-        console.log(userP);
-        localStorage.setItem('user', JSON.stringify(userP));
-        
-        // await this.userService.updateUser(user.id, userP);
-        Swal.fire({
-          icon: 'success',
-          title: 'Inicio de sesión exitoso',
-          showConfirmButton: false,
-          timer: 1500
-        }).then(() => this.router.navigate(["/principal"]))
-      }).catch(error => {
-        Swal.fire({
-          icon: 'error',
-          title: error.message,
-          timer: 3000
-        });
-      });
-
-
+  loginProvider(provider: string) {
+    this.loginService.loginWithProvider(provider).then(() => {
+      this.router.navigate(['/principal']);
+    });
   }
-  loginTwitter(){
-
-
-  }
-  loginGitHub(){
-
-    
-  }
+  
 
 }
