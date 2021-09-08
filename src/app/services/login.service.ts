@@ -28,14 +28,8 @@ export class LoginService {
   
   // ESTABA con async
   loginGoogle(){
-      // Como estamos haciendo un async await  vamos a usar el try catch
-    // try {
-    //   // return this.authService.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(()=>console.log(this.usuario)).catch(err => console.error('error'));
-    //   return this.authService.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    // }catch(error) {
-    //   console.log(error);
-    // }  
-      return this.authService.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(() => console.log(this.usuario)).catch(err => console.error('error'));
+       
+      return this.authService.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   login(email: string, password: string) {

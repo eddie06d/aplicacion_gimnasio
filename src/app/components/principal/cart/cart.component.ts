@@ -1,12 +1,14 @@
-
 import { StorageService } from '../../../services/storage.service';
 import { CartItemModel } from '../../../models/cart-item-model';
 import { Product } from '../../../models/product';
 import { MessageService } from '../../../services/message.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { render } from 'creditcardpayments/creditCardPayments';
 
 import Swal from 'sweetalert2';
+import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -17,6 +19,7 @@ export class CartComponent implements OnInit {
   cartItems = [];
   subtotal=0;
   total = 0;
+
   formu: FormGroup = new FormGroup({
     dni: new FormControl('', [Validators.required]),
     correo:new FormControl('', [Validators.required]),
@@ -24,14 +27,23 @@ export class CartComponent implements OnInit {
     pais: new FormControl({value:'Perú',disabled:'true'}, [Validators.required]),
     dep: new FormControl({value:'Lima',disabled:'true'}, [Validators.required])
   });
+  
   constructor(
     private messageService: MessageService,
     private storageService: StorageService
-    ) { }
-  
-  
+    ) { 
+      // render({
+      //   id : "#myPaypalButtons",
+      //   currency: "USD",
+      //   value: '100.00',
+      //   onApprove: (details) => { 
+      //     alert('Transaction Successfull');
+      //   }
+      // });
+    }
+
   ngOnInit(): void {
-    //this.initConfig();
+    this.initConfig();
     if (this.storageService.existsCart()) {
       this.cartItems = this.storageService.getCart();
     }
@@ -40,6 +52,66 @@ export class CartComponent implements OnInit {
     this.total = this.getTotal();
     console.log(this.cartItems);
   }
+
+   // Para pago con PAYPAL
+
+   public payPalConfig ? : IPayPalConfig;
+
+   private initConfig(): void {
+    this.payPalConfig = {
+        currency: 'EUR',
+        clientId: 'AUd2qhpfZCCH9Z_9HeaJ1F18Fk-9OrIGa-efk-sYiDSEDIe7d6nwvP9m2uUq16pHFGaJiQxmz76AzOVo',
+        createOrderOnClient: (data) => <ICreateOrderRequest> {
+            intent: 'CAPTURE',
+            purchase_units: [{
+                amount: {
+                    currency_code: 'EUR',
+                    value: this.getTotal().toString(),
+                    breakdown: {
+                        item_total: {
+                            currency_code: 'EUR',
+                            value: this.getTotal().toString()
+                        }
+                    }
+                },
+                items: 
+                    this.getItemsList()
+            }]
+        },
+        advanced: {
+            commit: 'true'
+        },
+        style: {
+            label: 'paypal',
+            layout: 'vertical'
+        },
+        onApprove: (data, actions) => {
+            console.log('onApprove - transaction was approved, but not authorized', data, actions);
+            actions.order.get().then(details => {
+                console.log('onApprove - you can get full order details inside onApprove: ', details);
+            });
+
+        },
+        onClientAuthorization: (data) => {
+            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        },
+        onCancel: (data, actions) => {
+            console.log('OnCancel', data, actions);
+
+        },
+        onError: err => {
+            console.log('OnError', err);
+        },
+        onClick: (data, actions) => {
+            console.log('onClick', data, actions);
+        },
+    };
+}
+   // -----------------------------------------------------------------------------------
+  
+
+
+
   getItem(): void {
     this.messageService.getMessage().subscribe((product: Product) => {
       let exists = false;
@@ -155,7 +227,6 @@ export class CartComponent implements OnInit {
     }
     this.storageService.setCart(this.cartItems);
   }
-
   cerrarFactura(){
     let btnClose = document.querySelector(".btn-close") as HTMLButtonElement;
     btnClose.click();
@@ -175,5 +246,7 @@ export class CartComponent implements OnInit {
        this.subtotal=0.0;
        this.total = 0.0;
        this.storageService.clear()
-    }    
+    }
+
+
 }

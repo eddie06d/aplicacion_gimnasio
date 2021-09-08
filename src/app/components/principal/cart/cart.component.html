@@ -84,13 +84,14 @@
                             <div class="col-md-5 text-end text-danger">S/. {{total.toFixed(2)}}</div>
                         </div>
                         <hr>
-                        <div class="d-grid">
-                            <button class="btn btn-warning" style="border-radius: 0%;font-weight: 300; font-size: 15px;">
-                                Paga con <img src="../../../assets/img/list-productos/pesas_barras/logo-Paypal.png" width="80" height="40"></button>
+                        <!-- PAGO CON PAYPAL -->
+                        
+                            <!-- <button class="btn btn-warning" style="border-radius: 0%;font-weight: 300; font-size: 15px;" id="myPaypalButtons">
+                                Paga con <img src="../../../assets/img/list-productos/pesas_barras/logo-Paypal.png" width="80" height="40"></button> -->
                            <hr>
                            <button class="btn btn-danger py-3 mb-4" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="border-radius: 0%;font-weight: 300; font-size: 15px;">
                                FINALIZAR COMPRA</button>
-                        </div>
+                        <ngx-paypal [config]="payPalConfig"></ngx-paypal>
                     </div>
             </div>
         </div>

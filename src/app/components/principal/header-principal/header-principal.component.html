@@ -1,49 +1,56 @@
 <!-- PARTE SUPERIOR---->
 <header>
   <div class="ocultar">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div class=" container container-fluid">
-            <a class="navbar-brand" routerLink ="/"><img src="../../../assets/img/Imagen2.png" width="200"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                <li class="nav-item  active">
-                    <a class="nav-link" >Tienda</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white">Contacto</a>
-                </li>
-                </ul>
-            </div>
-            <div class="mx-auto"><!-- PARTE DERECHA(CARRITO-LOGIN)-->
-                <!-- ICON- CARRITO-->
-                <button type="button" class="btn  position-relative boton_carrito m-4">
-                    <a class=" text-decoration-none text-light  p-2 px-3" routerLink ="/principal/cart">
-                        <i class="fas fa-shopping-cart"></i>
-                      </a>
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                      
-                      <!-- <span class="visually-hidden">unread messages</span> -->
-                    </span>
-                </button>
-                <!-- BUTTON LOGIN-->
-                <div class=" btn-group" role="group">
-                  <button id="btnGroupDrop1" type="button" class="btn btn-danger m-3 px-3 dropdown-toggle"data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="https://image.flaticon.com/icons/png/512/206/206853.png" width="35"><span class="m-2">{{ nombre }}</span><span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                      <li><a class="dropdown-item"><i class="fa fa-fw fa-user"></i> Editar Perfil</a></li>
-                      <li><a class="dropdown-item" routerLink ="/cart"><i class="fas fa-shopping-cart"></i> Mi Carrito</a></li>
-                      <li class="divider"></li>
-                      <li (click)="logout()"><a class="dropdown-item"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a></li>
-                  </ul>
-                </div>
-                <!------->
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class=" container container-fluid">
+          <a class="navbar-brand" routerLink ="/principal"><img src="../../../assets/img/Imagen2.png" width="200"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+              <li class="nav-item  active">
+                  <a class="nav-link" routerLink ="/principal" style="cursor: pointer;">Tienda</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-white">Contacto</a>
+              </li>
+              </ul>
           </div>
-      </nav>
+          <div class="mx-auto"><!-- PARTE DERECHA(CARRITO-LOGIN)-->
+
+              <!-- ICON- CARRITO-->
+
+              <button type="button" class="btn btn-black position-relative  m-4">
+                <a class=" text-decoration-none text-light  p-2 px-1" routerLink ="/principal/cart">
+                    <i class="fas fa-shopping-cart"></i>
+                  </a>      
+                <!-- <div *ngIf="AgregoCarrito"> -->
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" >
+                        <!-- {{conteo}} -->
+                        5+
+                        <span class="visually-hidden">unread messages</span>
+                    </span>
+                <!-- </div> -->
+              </button>
+              
+
+              <!-- BUTTON LOGIN-->
+              <div class=" btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-danger m-3 px-3 dropdown-toggle"data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://image.flaticon.com/icons/png/512/206/206853.png" width="35"><span class="m-2">{{ nombre }}</span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <li><a class="dropdown-item"><i class="fa fa-fw fa-user"></i> Editar Perfil</a></li>
+                    <li><a class="dropdown-item" routerLink ="/cart"><i class="fas fa-shopping-cart"></i> Mi Carrito</a></li>
+                    <li class="divider"></li>
+                    <li (click)="logout()"><a class="dropdown-item"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a></li>
+                </ul>
+              </div>
+              <!------->
+          </div>
+        </div>
+    </nav>
   </div>
   <!-- -----PARTE RESPONSIVO- dark--------- -->
   <div class="ocultar-responsive-nav">

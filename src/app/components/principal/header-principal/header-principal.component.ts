@@ -18,7 +18,7 @@ export class HeaderPrincipalComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
-    this.nombre = this.currentUser.nombres.split(' ')[2];
+    this.nombre = this.currentUser.nombres;
     this.userService.getUsuarios().subscribe((userSnapshop) => {
       this.usuarios = [];
       userSnapshop.forEach((user) => {
@@ -31,18 +31,33 @@ export class HeaderPrincipalComponent implements OnInit {
   }
 
   async logout() {
-    const { id, dni, nombres, correo, fecCreacion } = this.currentUser;
+
+    if(this.currentUser.dni){
+      const { id, dni, nombres, correo, fecCreacion } = this.currentUser;
     const user = {
       dni,
       nombres,
       correo,
       fecCreacion,
       estado: false
-    };
-    await this.userService.updateUser(id, user);
+              };
+      await this.userService.updateUser(id, user);    
+    }
+    
     localStorage.setItem('user', null);
     this.loginService.logout().then(() => this.router.navigate(["/login"]));
   }
+  conteo : number = 0;
+  AgregoCarrito : boolean = false;
+  
+  VerificarConteo():void{
+    
+    if(this.conteo >= 1){
+      this.AgregoCarrito = true;
+    }
+    
+  }
+
 
 }
 

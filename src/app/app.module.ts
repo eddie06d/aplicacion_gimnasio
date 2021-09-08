@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 //imports from Angular-Firebase
@@ -34,6 +34,12 @@ import { AdminProfileComponent } from './components/interfaz-admin/admin-profile
 import {NgxPaginationModule} from 'ngx-pagination';
 import { GestionProductsComponent } from './components/interfaz-admin/gestion-products/gestion-products.component';
 
+// PARA LAS FORMAS DE PAGO
+import { NgxPayPalModule } from 'ngx-paypal';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,16 +64,19 @@ import { GestionProductsComponent } from './components/interfaz-admin/gestion-pr
   imports: [
     BrowserModule,
     AngularFirestoreModule,
+    NgxPayPalModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firestore),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule,
-    //NgxPayPalModule
-    NgxPaginationModule
+    NgxSpinnerModule,
+    NgxPaginationModule,
+    NgbModule,
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

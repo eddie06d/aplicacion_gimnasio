@@ -69,14 +69,11 @@ export class LoginComponent implements OnInit {
   loginGoogle(){
     
     this.loginService.loginGoogle().then(async () => {
-        // localStorage.setItem('user', JSON.stringify(user));
-        const userP = {
-          // dni: user.dni,
-          // nombres: user.nombre,
-          // correo: user.correo,
-          // fecCreacion: user.fecCreacion,
-          // estado: true
-        };
+        console.log(this.loginService.usuario);
+        const userP = {...this.loginService.usuario};
+        console.log(userP);
+        localStorage.setItem('user', JSON.stringify(userP));
+        
         // await this.userService.updateUser(user.id, userP);
         Swal.fire({
           icon: 'success',
