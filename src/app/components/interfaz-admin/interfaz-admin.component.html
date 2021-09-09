@@ -9,17 +9,17 @@
         <!-- <span class="las la-angle-down"></span> -->
         <div class="user-settings" *ngIf="setting">
           <a routerLink="/interfaz-admin/admin-profile" (click)="showUserProfile()"><span class="las la-user-cog">  User profile</span></a>
-          <span class="las la-sign-out-alt" (click)="showUserProfile()" routerLink="/login">  Sign out</span>
+          <span class="las la-sign-out-alt" (click)="logout()">  Sign out</span>
         </div>
       </div>
     </div>
   </div>
   <div class="sidebar_main">
     <div class="sidebar_user">
-      <img src="../../../assets/img/admin.png" alt="img-user">
+      <img src="https://image.flaticon.com/icons/png/512/206/206853.png" alt="img-user">
       <div>
-        <h3>Eddie Huancahuire</h3>
-        <span>ejhuancahuire@gmail.com</span>
+        <h3>{{currentUser.nombres}}</h3>
+        <span>{{currentUser.correo}}</span>
       </div>
     </div>
     <div class="sidebar_menu">

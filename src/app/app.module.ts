@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 /*import * as firebase from 'firebase/app';*/
 
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { FinanceDashboardComponent } from './components/interfaz-admin/finance-d
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './components/principal/modal/modal/modal.component';
 
 
 @NgModule({
@@ -66,14 +68,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     GestionProductsComponent,
     GestionUsersComponent,
     FinanceDashboardComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
-    AngularFirestoreModule,
     NgxPayPalModule,
     AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firestore),    // Crear la conexion
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firestore),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

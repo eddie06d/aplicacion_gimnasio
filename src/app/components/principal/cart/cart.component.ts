@@ -9,6 +9,10 @@ import { render } from 'creditcardpayments/creditCardPayments';
 import Swal from 'sweetalert2';
 import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from '../modal/modal/modal.component';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -30,16 +34,11 @@ export class CartComponent implements OnInit {
   
   constructor(
     private messageService: MessageService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router : Router,
+    private modalService : NgbModal,
+    private spinner: NgxSpinnerService
     ) { 
-      // render({
-      //   id : "#myPaypalButtons",
-      //   currency: "USD",
-      //   value: '100.00',
-      //   onApprove: (details) => { 
-      //     alert('Transaction Successfull');
-      //   }
-      // });
     }
 
   ngOnInit(): void {
@@ -86,31 +85,49 @@ export class CartComponent implements OnInit {
             layout: 'vertical'
         },
         onApprove: (data, actions) => {
+          this.spinner.show();
             console.log('onApprove - transaction was approved, but not authorized', data, actions);
             actions.order.get().then(details => {
                 console.log('onApprove - you can get full order details inside onApprove: ', details);
             });
-
         },
         onClientAuthorization: (data) => {
-            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', 
+            JSON.stringify(data));
+
+            this.openModal(
+              data.purchase_units[0].items,
+              data.purchase_units[0].amount.value
+            );
+            this.emptyCartPaypal();
+            this.spinner.hide();
         },
+        // Cuando cerramos la ventana emergente de pago con paypal
         onCancel: (data, actions) => {
             console.log('OnCancel', data, actions);
 
         },
+        // Cualquier error de procedimiento 
         onError: err => {
             console.log('OnError', err);
         },
+        // cuando hacemos click en el boton de paypal 
         onClick: (data, actions) => {
             console.log('onClick', data, actions);
         },
     };
-}
+  }
+
+  // ABRIR MODAL FINAL 
+
+  openModal(items,amount): void {
+
+    const modalRef = this.modalService.open(ModalComponent);
+    modalRef.componentInstance.items = items;
+    modalRef.componentInstance.amount = amount;
+
+  }
    // -----------------------------------------------------------------------------------
-  
-
-
 
   getItem(): void {
     this.messageService.getMessage().subscribe((product: Product) => {
@@ -177,13 +194,16 @@ export class CartComponent implements OnInit {
       }
     })
   }
+  emptyCartPaypal(): void {
+       this.cartItems = [];
+       this.subtotal=0.0;
+       this.total = 0.0;
+       this.storageService.clear();
+   
+ }
 
-  deleteItem(i: number): void {
-    if (this.cartItems[i].qty > 1) {
-      this.cartItems[i].qty--;
-    } else {
-      this.cartItems.splice(i, 1);
-    }
+  deleteItem(i: number): void {  
+    this.cartItems.splice(i, 1);
     this.subtotal = this.getTotal();
     this.total = this.getTotal();
     this.storageService.setCart(this.cartItems);
@@ -232,7 +252,7 @@ export class CartComponent implements OnInit {
     btnClose.click();
   }
 
-  async enviarFactura() {
+  enviarFactura() {
         Swal.fire({
           icon: 'success',
           title: 'PAGO REALIZADO',
@@ -246,6 +266,8 @@ export class CartComponent implements OnInit {
        this.subtotal=0.0;
        this.total = 0.0;
        this.storageService.clear()
+
+      //  this.router.navigate(["/principal"]);
     }
 
 

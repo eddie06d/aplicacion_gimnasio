@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <div class="card">
+            <div class="bg-white border">
             <div class="card-body ">
               <h1 class="text-center my-4 h2"><b>Registrar Productos</b></h1>
               <form [formGroup]="form" (ngSubmit)="enviarProducto()" class="pt-3">
@@ -76,5 +76,70 @@
           </div>
         </div>
       </div>
+        <h1 class="mt-5">Gestión de Productos</h1>
+        <div class="d-flex justify-content-between">
+          <div class="form-group py-2">
+            <label for="" class="form-label">Filtrar por categoria:</label>
+            <select class="form-select"(change)="filtrado($event)" >
+                <option value="" selected>Seleccionar</option>
+                <option value="1">Articulos y accesorios</option>
+                <option value="2">Pesas y barras</option>
+                <option value="3">Máquinas y bancas</option>
+                <option value="4">Suplementos</option>
+            </select>
+          </div>
+        </div>
+        <div class="tabla">
+            <table class="table table-striped my-2">
+                <thead>
+                    <th>Nro</th>
+                    <th>Categoria</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of productsTemp;let indice=index">
+                        <td>{{indice+1}}</td>
+                        <td>{{product.categoria}}</td>
+                        <td>{{product.nombre}}</td>
+                        <td>S/ {{product.precio.toFixed(2)}}</td>
+                        <td>{{product.stock}}</td>
+                        <td>
+                            <a class="btn btn-outline-danger btn-sm mx-2" (click)="onDeleteProd(product.$key)"><i class="far fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+          </table>    
+          </div>
+    </div><!-- Fin Container-->
+</main>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-title h4" id="staticBackdropLabel">Editar Producto</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body mb-3">
+            <form [formGroup]="formEdit">
+                <div class="form-group mb-3">
+                    <label for="price" class="form-label">Precio</label>
+                    <input type="number" formControlName="precio" id="price"  class="form-control">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="stock" class="form-label">Stock</label>
+                    <input type="number" formControlName="stock" id="stock" class="form-control">
+                </div>
+                <div class="d-grid gap-2">
+                  <button class="btn btn-danger btn-block mt-2" type="submit" [disabled]="!form.valid">
+                    Actualizar producto
+                  </button>
+                </div>
+            </form>
+        </div>
+      </div>
     </div>
-  </main>
+  </div>

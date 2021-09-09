@@ -11,6 +11,7 @@ export class LoginService {
   // usuario: User;
   // public userdata$ : Observable<firebase.User>;
   usuario : any = {};
+  isProvider:boolean = false;
 
   constructor(private authService: AngularFireAuth) {
     // this.authService.authState.subscribe(user => {

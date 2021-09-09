@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h2 class="text-center font-weight"> <b>COMPRA REALIZADA CON ÉXITO</b></h2>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Crosss click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<!-- {{agregar()}} -->
+
+<div class="modal-body">
+    <h3 class="text-center"> <b>ITEMS COMPRADOS </b></h3>
+    <hr>
+    <div *ngFor="let item of items">
+        <p><b>Nombre: </b>{{item.name}}<br>
+        <b>Unidades: </b>{{item.quantity}}<br>
+        <b>Precio/unit: </b>S/.{{item.unit_amount.value}}</p>
+        <hr>
+    </div>
+    <hr>
+    <h3 class="text-center"><b>Total: </b> S/{{amount}}</h3>
+    
+</div>

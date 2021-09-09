@@ -17,10 +17,13 @@ export class HeaderPrincipalComponent implements OnInit {
   constructor(private loginService: LoginService, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
-    // this.currentUser = JSON.parse(localStorage.getItem('user'));
+
+
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
     // this.nombre = this.currentUser.nombres;
 
-    this.loginService.getAuth().subscribe(user => this.currentUser = user);
+    // this.loginService.getAuth().subscribe(user => this.currentUser = user);
+
     this.userService.getUsuarios().subscribe((userSnapshop) => {
       this.usuarios = [];
       userSnapshop.forEach((user) => {
@@ -33,20 +36,18 @@ export class HeaderPrincipalComponent implements OnInit {
   }
 
   async logout() {
-
-    // if(this.currentUser.dni){
-    //   const { id, dni, nombres, correo, fecCreacion } = this.currentUser;
-    // const user = {
-    //   dni,
-    //   nombres,
-    //   correo,
-    //   fecCreacion,
-    //   estado: false
-    //           };
-    //   await this.userService.updateUser(id, user);    
-    // }
-    
-    // localStorage.setItem('user', null);
+    const { id, dni, nombres, correo, fecCreacion, tipo } = this.currentUser;
+    console.log(this.currentUser);
+      const user = {
+        dni,
+        nombres,
+        correo,
+        fecCreacion,
+        estado: false,
+        tipo
+      };
+      await this.userService.updateUser(id, user);
+      localStorage.setItem('user', null);
     this.loginService.logout().then(() => this.router.navigate(["/login"]));
   }
   conteo : number = 0;

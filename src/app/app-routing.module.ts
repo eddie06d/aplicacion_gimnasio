@@ -12,6 +12,8 @@ import { HomePrincipalComponent } from './components/principal/home-principal/ho
 import { GestionProductsComponent } from './components/interfaz-admin/gestion-products/gestion-products.component';
 import { FinanceDashboardComponent } from './components/interfaz-admin/finance-dashboard/finance-dashboard.component';
 import { GestionUsersComponent } from './components/interfaz-admin/gestion-users/gestion-users.component';
+import { UserGuard } from './guards/user.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +23,8 @@ const routes: Routes = [
     { path: '', redirectTo: 'home-product', pathMatch: 'full' },
     {path: 'home-product', component: HomePrincipalComponent},
     {path: 'cart', component: PantallaCartComponent},
-  ]},
+  ],canActivate:[UserGuard]
+},
   { path: 'interfaz-admin', component: InterfazAdminComponent, children: [
     { path: '', redirectTo: 'analytic-dashboard', pathMatch: 'full' },
     { path: 'finance-dashboard', component: FinanceDashboardComponent },
@@ -30,7 +33,7 @@ const routes: Routes = [
     { path: 'gestion-products', component: GestionProductsComponent },
     { path: 'gestion-users', component: GestionUsersComponent },
     { path: '**', redirectTo: 'analytic-dashboard' }
-  ] }
+  ],canActivate:[AdminGuard]}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -40,8 +40,8 @@ export class BodyComponent implements OnInit {
     })
   }
   loadNewProducts() : void{
-    console.log('cargando productos nuevos');
-    this.productsNovedades = this.products.slice(1,5);  // Orden de productos
+    // console.log('cargando productos nuevos');
+    this.productsNovedades = this.products.slice(5,9);  // Orden de productos
   }
 
   mostrarLogin(){

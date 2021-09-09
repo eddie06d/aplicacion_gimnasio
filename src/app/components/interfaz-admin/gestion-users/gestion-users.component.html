@@ -12,7 +12,7 @@
     </div>
     <div class="form-group">
       <label for="" class="form-label">{{ labelValue }}</label>
-      <input type="text" class="form-control" [placeholder]="placeholderValue">
+      <input type="text" (input)="catchFilter($event)" class="form-control" [placeholder]="placeholderValue">
     </div>
   </div>
   <table class="table table-striped mt-5">
@@ -25,20 +25,12 @@
       <th>Acciones</th>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Eddie Huancahuire</td>
-        <td>70882033</td>
-        <td>ejhuancahuire@gmail.com</td>
-        <td><span class="badge bg-success" style="font-size: .8rem;">Online</span></td>
-        <td><button class="btn btn-outline-danger btn-sm"><i class="las la-user-alt-slash"></i>  Deshabilitar</button></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Juan Perez</td>
-        <td>70882033</td>
-        <td>jperez@gmail.com</td>
-        <td><span class="badge bg-danger" style="font-size: .8rem;">Offline</span></td>
+      <tr *ngFor="let user of usuariosExtra; let i=index">
+        <td>{{ i }}</td>
+        <td>{{ user.nombres }}</td>
+        <td>{{ user.dni }}</td>
+        <td>{{ user.correo }}</td>
+        <td><span class="badge {{ user.estado ? 'bg-success':'bg-danger' }}">{{ user.estado ? 'Online':'Offline' }}</span></td>
         <td><button class="btn btn-outline-danger btn-sm"><i class="las la-user-alt-slash"></i>  Deshabilitar</button></td>
       </tr>
     </tbody>

@@ -1,3 +1,9 @@
+<!-- ICONO DE CARGA  -->
+
+<ngx-spinner>
+    <h1><b>El pago se está realizando, espere un momento por favor... </b> </h1>
+</ngx-spinner>
+
 <!-- Seccion cuando no hay productos que mostrar (no hay tarjetas)  -->
 <div  *ngIf="cartItems.length < 1">
     <div class="text-center p-5">
@@ -85,62 +91,11 @@
                         </div>
                         <hr>
                         <!-- PAGO CON PAYPAL -->
-                        
-                            <!-- <button class="btn btn-warning" style="border-radius: 0%;font-weight: 300; font-size: 15px;" id="myPaypalButtons">
-                                Paga con <img src="../../../assets/img/list-productos/pesas_barras/logo-Paypal.png" width="80" height="40"></button> -->
                            <hr>
-                           <button class="btn btn-danger py-3 mb-4" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  style="border-radius: 0%;font-weight: 300; font-size: 15px;">
-                               FINALIZAR COMPRA</button>
                         <ngx-paypal [config]="payPalConfig"></ngx-paypal>
                     </div>
             </div>
         </div>
-    </div><!--<ngx-paypal [config]="payPalConfig"></ngx-paypal>-->
+    </div> 
 </div>
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="modal-title h4" id="staticBackdropLabel">Registrar Facturacion</span>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body mb-3">
-            <form [formGroup]="formu"(ngSubmit)="enviarFactura()" >
-                <div class="form-group">
-                    <label for="dni" class="form-label">DNI</label>
-                    <input type="text" formControlName="dni" id="dni" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="correo" class="form-label">Correo</label>
-                    <input type="text" formControlName="correo" id="correo" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="dir" class="form-label">Dirección</label>
-                    <input type="text" formControlName="dir" id="dir" class="form-control">
-                </div>
-                <div class="row g-2">
-                    <div class="col-md">
-                        <div class="form-group mb-3">
-                            <label for="pais" class="form-label">Pais</label>
-                            <input type="text" formControlName="pais" id="pais" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class=" mb-3">
-                            <label for="dep" class="form-label">Departamento</label>
-                            <input type="text" formControlName="dep" id="dep" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <!-- BOTON PAGAR-->
-                <div class="d-grid gap-2">
-                    <button class="btn btn-danger btn-block mt-2" type="submit" >
-                      Pagar S/. {{total.toFixed(2)}}
-                    </button>
-                  </div>
-            </form>
-        </div>
-      </div>
-    </div>
-  </div>

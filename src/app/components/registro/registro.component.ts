@@ -52,7 +52,7 @@ export class RegistroComponent implements OnInit {
         title: 'Usuario registrado exitosamente',
         showConfirmButton: false,
         timer: 1500
-      }).then(() => this.router.navigate(["/login"]));
+      }).then(() => this.router.navigate(["/principal"]));
     }).catch(error => {
       Swal.fire({
         icon: 'error',

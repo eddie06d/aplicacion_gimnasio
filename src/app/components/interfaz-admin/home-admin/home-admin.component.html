@@ -21,7 +21,7 @@
             <span>Purchases</span>
             <small>Number of purchases</small>
           </div>
-          <h2>17,663</h2>
+          <h2> 17,663</h2>
           <small>2% less purchases</small>
         </div>
         <div class="card-chart danger">
@@ -60,6 +60,8 @@
       </div>
     </div>
   </div>
+
+  <!-- GRAFICAS  -->
   <h2 style="margin-top: 1.3em;">Statistical Graphics</h2>
   <div class="zone-graphic">
     <div class="chart">
@@ -75,13 +77,15 @@
           xAxisLabel="Month"
           yAxisLabel="New users"
           timeline="true"
-          [results]="dataUsers"
+          [results]="multi"
           (select)="onSelect($event)"
           (activate)="onActivate($event)"
           (deactivate)="onDeactivate($event)"
           >
         </ngx-charts-line-chart>
       </div>
+
+
     </div>
     <div class="chart">
       <ngx-charts-area-chart

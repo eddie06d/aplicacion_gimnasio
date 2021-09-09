@@ -40,23 +40,26 @@ export class LoginComponent implements OnInit {
     const { correo, password } = this.form.value;
     let user = StringFunctions.filterUsersByEmail(correo, this.usuarios);
     this.loginService.login(correo, password).then(async () => {
+      this.loginService.isProvider = false;
       localStorage.setItem('user', JSON.stringify(user));
       const userP = {
         dni: user.dni,
         nombres: user.nombres,
         correo: user.correo,
         fecCreacion: user.fecCreacion,
-        estado: true
+        estado: true,
+        tipo: user.tipo
       };
       await this.userService.updateUser(user.id, userP);
-      /* this.loginService.usuario.dni = user.dni;
-      this.loginService.usuario.nombres = user.nombres; */
       Swal.fire({
         icon: 'success',
         title: 'Inicio de sesión exitoso',
         showConfirmButton: false,
         timer: 1500
-      }).then(() => this.router.navigate(["/principal"]))
+      }).then(() => {
+        if(user.tipo == 'administrador') this.router.navigate(["/interfaz-admin"])
+        else this.router.navigate(["/principal"])
+      })
     }).catch(error => {
       Swal.fire({
         icon: 'error',
